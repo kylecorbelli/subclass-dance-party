@@ -2,7 +2,7 @@ var MoveDancer = function(top, left, timeBetweenSteps) {
   Dancer.call(this, top, left, timeBetweenSteps);
   this.currentX = left;
   this.currentY = top;
-  this.xMove = Math.random() * 20 - 10;
+  this.xMove = Math.random() * 30 - 10;
   this.yMove = Math.random() * 20 - 10;
   this.orientation = this.xMove > 0 ? 1 : -1;
   this.$node.css({'transform' : 'scaleX(' + this.orientation + ')'});
