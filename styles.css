@@ -25,3 +25,11 @@ body, a:link, a:visited, a:active{
   border-radius:10px;
   position:absolute;
 }
+
+.bear {
+  width: 200px;
+  height: 321px;
+  border: none;
+  background-image: url('./images/bear.png');
+  background-position: -40px 0;
+}
