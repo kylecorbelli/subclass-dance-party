@@ -33,3 +33,10 @@ body, a:link, a:visited, a:active{
   background-image: url('./images/bear.png');
   background-position: -40px 0;
 }
+
+.robot {
+  height: 238px; 
+  width: 236px; 
+  border: none;
+  background-image: url('./images/robot.gif');
+}
