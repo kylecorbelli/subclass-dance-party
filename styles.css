@@ -43,3 +43,11 @@ body, a:link, a:visited, a:active{
   border: none;
   background-image: url('./images/robot.gif');
 }
+
+.bird {
+  width: 190px;
+  height: 150px;
+  border: none;
+  background-position: -543px -355px;
+  background-image: url('./images/bird.png');
+}
