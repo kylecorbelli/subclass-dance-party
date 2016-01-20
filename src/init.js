@@ -1,5 +1,12 @@
 $(document).ready(function() {
   window.dancers = [];
+  window.linedUp = false;
+
+  var cheerSong = $("<audio></audio>").attr({
+      'src':'audio/cheer.mp3',
+      'volume':1.0,
+      'autoplay':'autoplay'
+  }).appendTo("body");
 
   $(".addDancerButton").on("click", function(event) {
     /* This function sets up the click handlers for the create-dancer
@@ -32,6 +39,75 @@ $(document).ready(function() {
     );
     window.dancers.push(dancer);
     $('body').append(dancer.$node);
+
+
   });
+
+
+  $(".alignDancer").on("click", function(){
+    if (window.linedUp) {
+      window.linedUp = false;
+      window.dancers.forEach(function(item, i) {
+        item.xMove = item.oldXMove;
+        item.yMove = item.oldYMove;
+        // if (item.$node.hasClass('bird')) {
+          item.currentX = item.oldXPosition;
+          item.currentY = item.oldYPosition;
+        // }
+        item.$node.addClass('aligned');
+        item.setPosition(item.currentY, item.currentX);
+        item.$node.removeClass('aligned');
+      });
+    } else {
+      window.linedUp = true;
+      window.dancers.forEach(function(item, i){
+        item.oldXMove = item.xMove || Math.random() * 30 - 10;
+        item.oldYMove = item.yMove || Math.random() * 20 - 10;
+        item.xMove = 0;
+        // if (item.$node.hasClass('bird')) {
+          item.oldXPosition = item.currentX;
+          item.oldYPosition = item.currentY;
+        // }
+        item.yMove = 0;
+        // console.log($('body').width()/window.dancers.length);
+        item.currentX = (i + 1) * ($('body').width()*0.75/window.dancers.length);
+        item.currentY = $('body').height()/2;
+        item.$node.addClass('aligned');
+        item.setPosition(item.currentY, item.currentX);
+        item.$node.removeClass('aligned');
+      });
+    }
+    
+  });
+
+  $(document).on('click', 'span', function() {
+    var self;
+    for (var i = 0; i < window.dancers.length; i++) {
+      if ($(this)[0] === window.dancers[i].$node[0]) {
+        self = window.dancers[i];
+        break;
+      }
+    }
+    // console.log('this: ', this, '\nself: ', self);
+    self.step = function(){};
+    self.xMove = 0;
+    self.yMove = 0;
+    self.xPosition = 0;
+    // clearTimeout(self.timer);
+    self.$node.css({'background-image' : 'url("./images/explode.png")',
+                    'background-position' : '0 0',
+                    'background-size' : 'contain',
+                    'background-repeat' : 'no-repeat',
+                    'width' : '195px',
+                    'height' : '195px'});
+    var audio = $("<audio></audio>").attr({
+        'src':'audio/shotgun.wav',
+        'volume':0.4,
+        'autoplay':'autoplay'
+    }).appendTo("body");
+    //self.setPosition(self.currentY, self.currentX);
+    setTimeout(function(){ self.$node.remove(); }, 2200); 
+  });
+
 });
 
