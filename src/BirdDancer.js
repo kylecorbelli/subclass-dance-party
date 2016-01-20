@@ -15,11 +15,11 @@ var BirdDancer = function(top, left, timeBetweenSteps) {
     [-356, -355],
     [-543, -355]
   ];
+  this.xMove = Math.random() * 80 - 40;
+  this.yMove = Math.random() * 40 - 20;
   this.currentSpriteIndex = 0;
   MoveDancer.call(this, top * 0.4, left / 2, 40);
   this.$node.addClass('bird');
-  // this.xPosition = -40;
-  // this.yPosition = 20;
 };
 
 BirdDancer.prototype = Object.create(MoveDancer.prototype);
