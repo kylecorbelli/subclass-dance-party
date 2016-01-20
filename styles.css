@@ -10,23 +10,38 @@ body{
   background-repeat: no-repeat;
 }
 body, a:link, a:visited, a:active{
-  color: lightblue;
+  color: #999;
+  font-family: sans-serif;
 }
 .title, .addDancerButton{
   padding:5px 12px;
   float:right;
+  color: white;
+  text-decoration: none;
+}
+
+.title:hover, .addDancerButton:hover, .alignDancer:hover {
+  color: white;
+}
+
+.alignDancer {
+  text-decoration: none;
+  padding:5px 12px;
+  float: left;
 }
 .topbar{
   height:32px;
-  background-color: #555;
+  background-color: #333;
 }
 .title{
-  background-color: #777;
+  background-color: #333;
 }
 .dancer{
   border:10px solid red;
   border-radius:10px;
   position:absolute;
+  transition: top 0.5s, left 0.5s;
+  cursor: url('images/crosshairs.png'), auto;
 }
 
 .bear {
@@ -42,6 +57,7 @@ body, a:link, a:visited, a:active{
   width: 236px; 
   border: none;
   background-image: url('./images/robot.gif');
+  z-index: -50;
 }
 
 .bird {
@@ -50,4 +66,19 @@ body, a:link, a:visited, a:active{
   border: none;
   background-position: -543px -355px;
   background-image: url('./images/bird.png');
+}
+
+.aligned {
+}
+
+
+
+
+
+
+
+
+
+
+
 }
